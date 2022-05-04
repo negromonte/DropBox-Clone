@@ -1,13 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, FunctionComponent} from 'react';
 
 import { Container } from './styles';
 
-const SideMenu: React.FC = ({ children }) => {
-  const [scrollY, setScrollY] = useState();
+const scrollThreshold = 300;
+
+const SideMenu: React.FC = ({children}: any) => {
+  const [scrollY, setScrollY] = useState(0);
+  const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
     function onScroll() {
-      console.log(window.scrollY);
+      setScrollY(window.scrollY);
+      setIsActive(false);
     }
 
     window.addEventListener('scroll', onScroll);
@@ -15,7 +19,13 @@ const SideMenu: React.FC = ({ children }) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  return <Container>{children}</Container>;  
+  const classes = [
+    isActive ? 'open' : '',
+    scrollY <= scrollThreshold ? 'scrollOpen' : '',
+  ];
+  const className = classes.join(' ').trim();
+
+  return <Container className={className}>{children}</Container>;  
 };
 
 export default SideMenu;

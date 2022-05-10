@@ -36,7 +36,7 @@ function App() {
     />
 
     <SideMenu>
-      <MenuForm />
+      <MenuForm/>
     </SideMenu>
 
     <GlobalStyles />

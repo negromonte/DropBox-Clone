@@ -23,9 +23,9 @@ export const Container = styled.div`
 
     transform: translateX(100%);
 
-    transition: 0.5s tranform cubic-bezier(0.5, 0, 0, 1);
+    transition: 0.5s transform cubic-bezier(0.5, 0, 0, 1);
 
-    &.oen {
+    &.open {
         transform: translateX(0);
     }
 
@@ -35,7 +35,7 @@ export const Container = styled.div`
         }
 
         &.scrollOpen .action--close {
-            dislay: none;
+            display: none;
         }
     }
 `;
